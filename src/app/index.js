@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Navbar, Nav } from "react-bootstrap";
-import CatImage from "../catimage";
+import CatImage from "../catimage/";
 import FavoriteCat from "../favorites";
 import '../catimage/style.css';
 
