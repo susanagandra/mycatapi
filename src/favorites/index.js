@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Votes from "../votes";
 
 const FavoriteCat = () => {
   const [error, setError] = useState(null);
@@ -60,6 +61,7 @@ const FavoriteCat = () => {
         ))}
       </div>
     </div>
+     
   );
 };
 
