@@ -4,3 +4,11 @@ header {
     font-family: "Arial", sans-serif;
   }
   
+  .maincontent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  

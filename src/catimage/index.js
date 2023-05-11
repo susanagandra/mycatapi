@@ -57,20 +57,26 @@ const CatImage = () => {
 
   return (
     <div>
-      <br></br>
-      <div className="maincontent">
-        <div id="grid" className="imgrid">
-          {imageCat.map((image) => (
-            <div key={image.id}>
-              <img key={image.id} src={image.url} alt={image.id} />
-              <button className="button" onClick={() => addToFavorite(image)}> Add to My Favorites </button>
-            </div>
-          ))}
-        </div>
+    <br></br>
+    <div className="maincontent">
+      <div id="grid" className="imgrid">
+        {imageCat.map((image) => (
+          <div key={image.id} className="image-container">
+            <img
+              key={image.id}
+              src={image.url}
+              alt={image.id}
+              className="image"
+            />
+            <button className="button" onClick={() => addToFavorite(image)}>
+              Add to My Favorites
+            </button>
+          </div>
+        ))}
       </div>
-      {error && <div className="text-danger">{error}</div>}
     </div>
-  )
-};
+  </div>
+  
+  )};  
 
 export default CatImage;
