@@ -6,22 +6,30 @@ const UploadCat = () => {
   const [showModal, setShowModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const [newImage, setNewImage] = useState([]);
-  
+  const [newImage, setNewImage] = useState(null);
 
-  const apiKey ="live_pbbN9GvoaedvPVRnGUtbFjZaDhe5r9qpMcNDR6U3AcmaAbg8uoKVOib2R5MZJMIq";
+  const apiKey = "live_pbbN9GvoaedvPVRnGUtbFjZaDhe5r9qpMcNDR6U3AcmaAbg8uoKVOib2R5MZJMIq";
   const url = "https://api.thecatapi.com/v1/images/upload";
 
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
 
   const handleUpdateCat = (event) => {
-
     event.preventDefault();
     setIsSubmitting(true);
-    
 
+    const fileInput = document.getElementById('file-input');
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+      reader.onload = function (e) {
+            const binaryData = e.target.result;
+            console.log(binaryData);
+        };
+
+    reader.readAsBinaryString(file);
     const formData = new FormData();
+    formData.append('file', file);
+
 
     const requestOptions = {
       method: "POST",
@@ -37,6 +45,7 @@ const UploadCat = () => {
         setIsSubmitting(false);
         console.log(response);
         handleCloseModal();
+        setNewImage(null); 
       })
       .catch((error) => {
         setIsSubmitting(false);
@@ -62,7 +71,7 @@ const UploadCat = () => {
               <Form.Control
                 type="file"
                 placeholder="Choose an image file"
-                onChange={(event) => setNewImage((event.target.files[0]))}
+                onChange={(event) => setNewImage(event.target.files[0])}
               />
             </Form.Group>
 
