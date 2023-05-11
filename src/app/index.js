@@ -18,15 +18,17 @@ const App = () => {
     <BrowserRouter>
       <div>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Navbar.Brand href="#home" style={{padding: "15px", paddingRigth: "10px"}}> <img src={logo} alt="Logo" style={{maxHeight: "50px", maxWidth: "100%", border:"none"}} /> Cat's API </Navbar.Brand>
+          <Navbar.Brand href="#home" style={{padding: "5px", paddingRigth: "5px"}}> <img src={logo} alt="Logo" style={{maxHeight: "50px", maxWidth: "100%", border:"none"}} /> Cat's API </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mr-auto">
+            <Container style={{ display: "flex", justifyContent: "flex-end" }}>
+            <Nav className="ml-auto">
               <Nav.Link href="/image"> Image </Nav.Link>
               <Nav.Link href="/favorite"> Favorite </Nav.Link>
               <Nav.Link href="/breeds"> Breeds </Nav.Link>
               <Nav.Link href="/upload"> Upload </Nav.Link>
             </Nav>
+            </Container>
           </Navbar.Collapse>
         </Navbar>
         <Container>

@@ -1,33 +1,34 @@
 import { useEffect, useState } from "react";
-import {} from "../catimage";
-import UploadCat from "../uploadimage";
 
 
-const FavoriteCat = ({imageCat}) => {
-    const [setError] = useState(null);
+const FavoriteCat = ({favorite}) => {
+    const [error, setError] = useState(null);
     const [favoriteCat, setFavoriteCat] = useState([]);
-
-    const url = "https://api.thecatapi.com/v1/images/:image_id?sub_id&size&include_vote=&include_favourite";
+    const url = "https://api.thecatapi.com/v1/favourites";
     const apiKey = "live_pbbN9GvoaedvPVRnGUtbFjZaDhe5r9qpMcNDR6U3AcmaAbg8uoKVOib2R5MZJMIq";
    
+
     useEffect(() => {
+
         const requestOptions = {
             method: "GET",
             headers: {
                 "x-api-key": apiKey,
+                "Content-Type": "application/json"
             }
         };
 
         fetch(url, requestOptions)
             .then(response => response.json())
             .then((data) => {
+                console.log(data);
                 setFavoriteCat(data);
             })
             .catch((error) => {
                     console.error(error);
                     setError("Error images.");
             });
-    });
+    }, []) ;
 
 
     return (

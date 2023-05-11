@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import FavoriteCat from "../favorites";
 
 
 const CatImage = () => {
@@ -36,10 +37,10 @@ const CatImage = () => {
             });
         }, []);
 
-    function addToFavorite(){
-        
+    function addToFavorite(imageCat){
+        console.log(imageCat);
+        return   <FavoriteCat favorite={imageCat} />;
     }
-
 
     return (
         <div>
@@ -49,7 +50,7 @@ const CatImage = () => {
                     {imageCat.map((imageCat) => (
                         <div key={imageCat.id}>
                             <img key={imageCat.id} src={imageCat.url} alt={imageCat.id} />
-                            <button className="button" onClick={() => addToFavorite(imageCat.id)}> Add to My Favorites </button>
+                            <button className="button" onClick={() => addToFavorite(imageCat.url)}> Add to My Favorites </button>
                         </div>
             
                     ))}
