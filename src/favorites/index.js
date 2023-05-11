@@ -40,6 +40,7 @@ const FavoriteCat = () => {
       .then(response => response.json())
       .then(data => {
         console.log(data);
+
         setFavoriteCat(favoriteCat.filter(favorite => favorite.id !== favoriteId));
       })
       .catch(error => {

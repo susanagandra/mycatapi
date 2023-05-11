@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import FavoriteCat from "../favorites";
 
 const CatImage = () => {
   const [error, setError] = useState(null);
