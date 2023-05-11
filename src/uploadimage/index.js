@@ -35,7 +35,7 @@ const UploadCat = () => {
     fetch(url, requestOptions)
       .then((response) => {
         setIsSubmitting(false);
-        console.log(response.response);
+        console.log(response);
         handleCloseModal();
       })
       .catch((error) => {
@@ -62,7 +62,7 @@ const UploadCat = () => {
               <Form.Control
                 type="file"
                 placeholder="Choose an image file"
-                onChange={(e) => setNewImage((e.target.files[0]))}
+                onChange={(event) => setNewImage((event.target.files[0]))}
               />
             </Form.Group>
 
