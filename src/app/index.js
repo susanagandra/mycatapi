@@ -1,10 +1,15 @@
 import React from "react";
 import { BrowserRouter, Routes, Route} from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Navbar, Nav } from "react-bootstrap";
+import Home from "../home";
 import CatImage from "../catimage/";
 import FavoriteCat from "../favorites";
+import Breeds from "../breeds";
+import UploadCat from "../uploadimage";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 import '../catimage/style.css';
+import "../home/style.css";
 
 
 const App = () => {
@@ -19,6 +24,8 @@ const App = () => {
               <Nav.Link href="/home"> Home </Nav.Link>
               <Nav.Link href="/image"> Image </Nav.Link>
               <Nav.Link href="/favorite"> Favorite </Nav.Link>
+              <Nav.Link href="/breeds"> Breeds </Nav.Link>
+              <Nav.Link href="/upload"> Upload </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -26,8 +33,11 @@ const App = () => {
           <Row>
             <Col>
             <Routes>
+            <Route path="/home" element={<Home />} />
               <Route path="/image" element={<CatImage />} />
+              <Route path="/breeds" element={<Breeds />} />
               <Route path="/favorite" element={<FavoriteCat />} />
+              <Route path="/upload" element={<UploadCat />} />
             </Routes>
             </Col>
           </Row>

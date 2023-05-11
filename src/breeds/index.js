@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
-import {} from "../catimage";
-import UploadCat from "../uploadimage";
 
-
-const FavoriteCat = ({imageCat}) => {
+const Breeds = () => {
     const [setError] = useState(null);
-    const [favoriteCat, setFavoriteCat] = useState([]);
+    const [breedsCat, setBreedsCat] = useState([]);
 
-    const url = "https://api.thecatapi.com/v1/images/:image_id?sub_id&size&include_vote=&include_favourite";
+    const url = "https://api.thecatapi.com/v1/breeds?limit=10&page=0";
     const apiKey = "live_pbbN9GvoaedvPVRnGUtbFjZaDhe5r9qpMcNDR6U3AcmaAbg8uoKVOib2R5MZJMIq";
    
     useEffect(() => {
@@ -15,13 +12,15 @@ const FavoriteCat = ({imageCat}) => {
             method: "GET",
             headers: {
                 "x-api-key": apiKey,
+                "Content-Type": "application/json"
             }
-        };
+          };
+          
 
         fetch(url, requestOptions)
             .then(response => response.json())
             .then((data) => {
-                setFavoriteCat(data);
+                setBreedsCat(data);
             })
             .catch((error) => {
                     console.error(error);
@@ -33,9 +32,9 @@ const FavoriteCat = ({imageCat}) => {
     return (
         <div>
             <div className="gridFavorites">
-                    {favoriteCat.map((favorite) => (
-                        <div key={favorite.id}>
-                            <img src={favorite.imageCat.url} alt={'cat'} />
+                    {breedsCat.map((breeds) => (
+                        <div key={breeds.id}>
+                            <img src={breeds.url} alt={'cat'} />
                         </div>
                     ))}
             </div>
@@ -43,4 +42,4 @@ const FavoriteCat = ({imageCat}) => {
     )
 };
 
-export default FavoriteCat;
+export default Breeds;

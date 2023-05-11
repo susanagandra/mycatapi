@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
 
-const CatImage = () => {
+const Home = () => {
     const [setError] = useState(null);
     const [imageCat, setImageCat] = useState([]);
 
     const apiKey = "live_pbbN9GvoaedvPVRnGUtbFjZaDhe5r9qpMcNDR6U3AcmaAbg8uoKVOib2R5MZJMIq";
-    const url = "https://api.thecatapi.com/v1/images/search?limit=6";
+    const url = "https://api.thecatapi.com/v1/images/search?limit";
 
 
     useEffect(() => {
@@ -36,27 +36,22 @@ const CatImage = () => {
             });
         }, []);
 
-    function addToFavorite(){
-        
-    }
-
-
+ 
     return (
         <div>
             <br></br>
+            <header> Wealcome to the Cat's API </header>
+            <br></br>
             <div className="maincontent">
-                <div id="grid" className="imgrid">
                     {imageCat.map((imageCat) => (
                         <div key={imageCat.id}>
                             <img key={imageCat.id} src={imageCat.url} alt={imageCat.id} />
-                            <button className="button" onClick={() => addToFavorite(imageCat.id)}> Add to My Favorites </button>
                         </div>
             
                     ))}
-                </div>
             </div>
         </div>
     )
 };
 
-export default CatImage;
+export default Home;
