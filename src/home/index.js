@@ -40,7 +40,7 @@ const Home = () => {
     return (
         <div>
             <br></br>
-            <header> Wealcome to the Cat's API </header>
+            <header> Welcome to the Cat's API </header>
             <br></br>
             <div className="maincontent">
                     {imageCat.map((imageCat) => (

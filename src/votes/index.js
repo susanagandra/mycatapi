@@ -4,12 +4,16 @@ import History from "./history";
 const Votes = () => {
   const [error, setError] = useState(null);
   const [voteCat, setVoteCat] = useState([]);
- 
+  const [votes, setVotes] = useState({});
+
   const url = "https://api.thecatapi.com/v1/images/search";
   const apiKey = "live_pbbN9GvoaedvPVRnGUtbFjZaDhe5r9qpMcNDR6U3AcmaAbg8uoKVOib2R5MZJMIq";
 
-
   useEffect(() => {
+    fetchNewImage();
+  }, []);
+
+  function fetchNewImage() {
     const requestOptions = {
       method: "GET",
       headers: {
@@ -28,8 +32,7 @@ const Votes = () => {
         console.error(error);
         setError("Error loading votes.");
       });
-  }, []);
-
+  }
 
   function addVotes(image_id, value) {
     const requestOptions = {
@@ -48,11 +51,18 @@ const Votes = () => {
       .then(response => response.json())
       .then((data) => {
         console.log(data);
+        fetchNewImage();
+        setVotes({
+          ...votes,
+          [image_id]: value
+        });
       })
       .catch((error) => {
         console.error(error);
         setError("Error adding vote.");
       });
+
+    setVoteCat([]);
   }
 
   return (
@@ -76,7 +86,9 @@ const Votes = () => {
             </div>
           ))}
         </div>
-        <div> <History/> </div>
+        <div>
+          <History votes={votes} />
+        </div>
       </div>
     </div>
   );
