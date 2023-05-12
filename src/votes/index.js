@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import History from "./history";
 
 const Votes = () => {
   const [error, setError] = useState(null);
   const [voteCat, setVoteCat] = useState([]);
-
+ 
   const url = "https://api.thecatapi.com/v1/images/search";
   const apiKey = "live_pbbN9GvoaedvPVRnGUtbFjZaDhe5r9qpMcNDR6U3AcmaAbg8uoKVOib2R5MZJMIq";
 
@@ -30,7 +31,7 @@ const Votes = () => {
   }, []);
 
 
-  function addVotes(image_id) {
+  function addVotes(image_id, value) {
     const requestOptions = {
       method: "POST",
       headers: {
@@ -39,7 +40,7 @@ const Votes = () => {
       },
       body: JSON.stringify({
         image_id: image_id,
-        value:1
+        value: value
       })
     };
 
@@ -66,7 +67,7 @@ const Votes = () => {
                 alt={image.id}
                 className="image"
               />
-              <button className="button" onClick={() => addVotes(image.id)}>
+              <button className="button" onClick={() => addVotes(image.id, 1)}>
                 Vote Up
               </button>
               <button className="button" onClick={() => addVotes(image.id, 0)}>
@@ -75,6 +76,7 @@ const Votes = () => {
             </div>
           ))}
         </div>
+        <div> <History/> </div>
       </div>
     </div>
   );
