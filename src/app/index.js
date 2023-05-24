@@ -10,7 +10,6 @@ import UploadCat from "../uploadimage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import '../catimage/style.css';
 import "../home/style.css";
-import "../favorites/style.css";
 import "../uploadimage/style.css";
 import logo from '../utli/cats.jpg';
 

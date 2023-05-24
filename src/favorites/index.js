@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Votes from "../votes";
+import { AnimatedImage, ButtonContainer, GridFavorite, ImageWithButton } from "./style";
+import { Button } from "react-bootstrap";
 
 const FavoriteCat = () => {
   const [error, setError] = useState(null);
@@ -52,17 +54,23 @@ const FavoriteCat = () => {
 
   return (
     <div>
-      <div className="gridFavorites">
+      <GridFavorite>
         {favoriteCat.map(favorite => (
           <div key={favorite.id}>
-            <img src={favorite.image.url} alt="cat" />
-            <button className="button" onClick={() => deleteFavorite(favorite.id)}>Delete Favorite</button>
+          <ImageWithButton>
+            <AnimatedImage src={favorite.image.url} alt="cat" />
+            <ButtonContainer>
+            <Button onClick={() => deleteFavorite(favorite.id)}>Delete Favorite</Button>
+            </ButtonContainer>
+          </ImageWithButton>
           </div>
         ))}
-      </div>
-    </div>
-     
+       </GridFavorite>
+    </div>          
   );
 };
+
+
+
 
 export default FavoriteCat;
