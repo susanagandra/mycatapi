@@ -1,3 +1,4 @@
+
 header {
     font-size: 36px; 
     text-align: center;
@@ -5,10 +6,14 @@ header {
   }
   
   .maincontent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+}
 
-  
+
+.maincontent img {
+    width: 200px; 
+    height: auto; 
+    margin: 10px;
+}
